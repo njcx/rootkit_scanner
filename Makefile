@@ -1,7 +1,5 @@
-SUBDIRS = lkm
-
-.PHONY: all $(SUBDIRS)
-all: tidy build $(SUBDIRS)
+.PHONY: all
+all: tidy build module
 
 
 tidy:
@@ -20,5 +18,6 @@ clean:
 	go clean -cache
 
 
-$(SUBDIRS):
-	$(MAKE) -C $@
+module:
+	@echo "拷贝ko文件到当前目录:"
+	cd lkm && make && cd ..

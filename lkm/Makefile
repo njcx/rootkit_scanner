@@ -12,7 +12,7 @@ module:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 cp:
-	cp $(PWD)/rootkit_sc_driver.ko $(PWD)/../rootkit_sc_driver.ko
+	cp $(SRCDIR)/rootkit_sc_driver.ko ..
 
 clean:
 	@echo "清理LKM模块:"
