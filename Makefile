@@ -1,6 +1,6 @@
 SUBDIRS = lkm
 
-.PHONY: all
+.PHONY: all $(SUBDIRS)
 all: tidy build $(SUBDIRS)
 
 
