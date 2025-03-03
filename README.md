@@ -1,4 +1,4 @@
-# rootkit_scanner
+# Rootkit_Scanner
 
 This scanner supports both kernel-mode and user-mode rootkits.
 
