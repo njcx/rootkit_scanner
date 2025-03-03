@@ -1,0 +1,10 @@
+/bin/
+/pkg/
+*.swp
+*.swo
+.vscode/
+.idea/
+.DS_Store
+/vendor/
+go.sum
+.golangci.yml
