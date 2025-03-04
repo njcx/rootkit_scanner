@@ -293,7 +293,7 @@ func compareProcesses(procProcesses, psProcesses *ProcessMap) {
 func psCheck() {
 
 	fmt.Print("\n" + "===  Ps integrity Analysis Results === " + "\n\n")
-	// Only check processes running for more than 5 minutes
+	// Only check processes running for more than 1 minutes
 	minAge := 1 * time.Minute
 	procProcesses, err := getProcProcesses(minAge)
 	if err != nil {
