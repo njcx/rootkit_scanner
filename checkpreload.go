@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -20,7 +21,7 @@ func checkLDPreloadConfig() (bool, []string) {
 
 	// Check /etc/ld.so.preload
 	if _, err := os.Stat("/etc/ld.so.preload"); err == nil {
-		content, err := os.ReadFile("/etc/ld.so.preload")
+		content, err := ioutil.ReadFile("/etc/ld.so.preload")
 		if err == nil && len(content) > 0 {
 			suspiciousFiles = append(suspiciousFiles, "/etc/ld.so.preload")
 		}
@@ -30,7 +31,7 @@ func checkLDPreloadConfig() (bool, []string) {
 	files, err := filepath.Glob("/etc/ld.so.conf.d/*.conf")
 	if err == nil {
 		for _, file := range files {
-			content, err := os.ReadFile(file)
+			content, err := ioutil.ReadFile(file)
 			if err == nil && strings.Contains(string(content), "LD_PRELOAD") {
 				suspiciousFiles = append(suspiciousFiles, file)
 			}
