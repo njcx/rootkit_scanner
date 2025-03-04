@@ -25,5 +25,7 @@ struct detection_result {
 };
 
 extern struct detection_result global_results;
+void init_del_workqueue(void);
+void exit_del_workqueue(void);
 
 #endif /* CORE_H */

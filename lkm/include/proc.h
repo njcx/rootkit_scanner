@@ -24,5 +24,5 @@ struct proc_list {
 };
 
 void analyze_processes(void);
-
+void analyze_fops(void);
 #endif /* PROC_H */
