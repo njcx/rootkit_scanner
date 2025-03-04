@@ -1,4 +1,3 @@
-#include <linux/kallsyms.h>
 
 #include "core.h"
 #include "util.h"

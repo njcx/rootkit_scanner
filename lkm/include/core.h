@@ -11,6 +11,8 @@
 #include <linux/kallsyms.h>
 #include <linux/fs.h>
 #include <linux/slab.h>
+#include <linux/kallsyms.h>
+#include <asm/asm-offsets.h> /* NR_syscalls */
 
 #define MAX_BUFFER_SIZE 4096
 
